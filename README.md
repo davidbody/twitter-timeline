@@ -19,41 +19,41 @@ Uses the [TwitteR](https://cran.r-project.org/package=twitteR) R package.
 # A tibble: 20 × 5
        screenName tweets retweets replies total
             <chr>  <int>    <int>   <int> <int>
-1      DMRegister     73       15       0    88
-2          marick     14       29       8    51
-3     EmacsReddit     30        0       0    30
-4             EFF     16        0       5    21
-5       gigasquid      7       11       0    18
-6     paulkrugman     10        0       7    17
-7     BeschlossDC     16        0       0    16
-8   aaron_hoffman     11        2       2    15
-9         jonfavs      8        5       0    13
-10      joshbloch      7        5       1    13
-11 mathbabedotorg      4        9       0    13
-12     MicrosoftR     13        0       0    13
-13  jonneiderbach     12        0       0    12
-14        Snowden      4        8       0    12
-15            r5i      9        1       0    10
-16       willywos      3        4       3    10
-17       ACLUiowa      5        4       0     9
-18     david_body      5        0       4     9
-19  NateSilver538      3        3       3     9
-20    deanwampler      3        5       0     8
+1      DMRegister     75       17       0    92
+2       davidfrum     17       12      16    45
+3          marick      8       15       9    32
+4    JamesFallows     15        6       5    26
+5     deanwampler      7       15       0    22
+6          maddow     17        5       0    22
+7     paulkrugman     12        0       9    21
+8        ACLUiowa      7       12       0    19
+9         mtaibbi     17        2       0    19
+10      Rbloggers     18        0       0    18
+11      gigasquid      2       13       0    15
+12      joshbloch      3       10       2    15
+13    Capncavedan      5        4       4    13
+14        Snowden      4        3       5    12
+15            EFF      9        1       0    10
+16         fitbit      7        3       0    10
+17     juliasilge      3        4       3    10
+18 VerifiedVoting     10        0       0    10
+19  aaron_hoffman      9        0       0     9
+20   AnnaPawlicka      3        6       0     9
 ```
 
 `long_report` contains the same data but in a format convenient for plotting.
 
 ```
 > head(long_report)
-# A tibble: 6 × 3
-   screenName   type count
-        <chr>  <chr> <int>
-1  DMRegister tweets    73
-2      marick tweets    14
-3 EmacsReddit tweets    30
-4         EFF tweets    16
-5   gigasquid tweets     7
-6 paulkrugman tweets    10
+# A tibble: 6 × 4
+    screenName   type count    percent
+         <chr>  <chr> <int>      <dbl>
+1   DMRegister tweets    75 0.14677104
+2    davidfrum tweets    17 0.03326810
+3       marick tweets     8 0.01565558
+4 JamesFallows tweets    15 0.02935421
+5  deanwampler tweets     7 0.01369863
+6       maddow tweets    17 0.03326810
 ```
 
 The plot looks like this.
