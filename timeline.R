@@ -64,8 +64,9 @@ get_homeTimeline <- function(n = 200) {
 # Retreive 750 most recent tweets
 home_timeline_df <- get_homeTimeline(n = 750)
 
-# save(home_timeline_df, file = "home_timeline_df.RData")
-# load("home_timeline_df.RData")
+filename <- paste0("home_timeline_df-", format(Sys.Date(), "%Y%m%d"), ".RData")
+# save(home_timeline_df, file = filename))
+# load(filename)
 
 # Group by screenName and count tweets, retweets, and replies, and sort in descending order of total tweets
 report <- home_timeline_df %>%
