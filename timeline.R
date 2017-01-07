@@ -83,5 +83,7 @@ long_report$percent <- long_report$count / sum(long_report$count)
 # Plot the top tweeters from the timeline
 g <- ggplot(long_report, aes(x = reorder(screenName, percent), y = percent))
 g <- g + geom_bar(stat = "identity", aes(fill = type))
+g <- g + labs(title = "Tweeters constituting 1% or more of timeline", y = "Percent of tweets in timeline", x = "Screen name")
+g <- g + scale_y_continuous(labels = scales::percent)
 g <- g + coord_flip()
 g
