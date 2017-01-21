@@ -76,9 +76,10 @@ report <- home_timeline_df %>%
     select(screenName, tweets, retweets, replies, total)
 
 # Put data on tweeters constituting 1% or more of timeline in long format for plotting
-one_percent_of_tweets <- as.integer(count(home_timeline_df) / 100)
+total_tweets <- as.integer(count(home_timeline_df))
+one_percent_of_tweets <- as.integer(total_tweets / 100)
 long_report <- report %>% filter(total >= one_percent_of_tweets) %>% select(-total) %>% gather(type, count, -screenName)
-long_report$percent <- long_report$count / sum(long_report$count)
+long_report$percent <- long_report$count / total_tweets
 
 # Plot the top tweeters from the timeline
 g <- ggplot(long_report, aes(x = reorder(screenName, percent), y = percent))
