@@ -2,3 +2,4 @@
 credentials.R
 .RHistory
 *.RData
+.Rproj.user
