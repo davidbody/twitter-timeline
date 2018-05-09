@@ -25,7 +25,7 @@ report <- timeline %>%
 
 # Put data on tweeters constituting 1% or more of timeline in long format for plotting
 total_tweets <- as.integer(count(timeline))
-one_percent_of_tweets <- as.integer(total_tweets / 100)
+one_percent_of_tweets <- round(total_tweets / 100)
 long_report <- report %>% filter(total >= one_percent_of_tweets) %>% select(-total) %>% gather(type, count, -screen_name)
 long_report$percent <- long_report$count / total_tweets
 
