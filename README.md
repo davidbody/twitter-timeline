@@ -2,58 +2,52 @@
 
 ### Retrieve and your Twitter timeline and plot the most active tweeters
 
-Uses the [TwitteR](https://cran.r-project.org/package=twitteR) R package.
+Uses the [rtweet](http://rtweet.info/) R package.
 
-## Steps
+## Setup
 
-1. Create a Twitter app at https://apps.twitter.com/app/new
-
-2. Copy `credentials.R.example` to `credentials.R` and add the credentials for your Twitter app.
+See the [rtweet](http://rtweet.info/) documentation for how to set up a Twitter app and API authorization.
 
 ## Output
 
 `report` summarizes tweets by `screenName` and shows you the most active tweeters in your timeline.
 
 ```
-> head(report, n = 20)
-# A tibble: 20 × 5
-       screenName tweets retweets replies total
-            <chr>  <int>    <int>   <int> <int>
-1      DMRegister     75       17       0    92
-2       davidfrum     17       12      16    45
-3          marick      8       15       9    32
-4    JamesFallows     15        6       5    26
-5     deanwampler      7       15       0    22
-6          maddow     17        5       0    22
-7     paulkrugman     12        0       9    21
-8        ACLUiowa      7       12       0    19
-9         mtaibbi     17        2       0    19
-10      Rbloggers     18        0       0    18
-11      gigasquid      2       13       0    15
-12      joshbloch      3       10       2    15
-13    Capncavedan      5        4       4    13
-14        Snowden      4        3       5    12
-15            EFF      9        1       0    10
-16         fitbit      7        3       0    10
-17     juliasilge      3        4       3    10
-18 VerifiedVoting     10        0       0    10
-19  aaron_hoffman      9        0       0     9
-20   AnnaPawlicka      3        6       0     9
+> print(report)
+# A tibble: 189 x 5
+   screen_name   tweets retweets replies total
+   <chr>          <int>    <int>   <int> <int>
+ 1 NateSilver538     13        8       4    25
+ 2 joshbloch          8       11       2    21
+ 3 paulkrugman       11        0       7    18
+ 4 aaron_hoffman      7        8       1    16
+ 5 NWSDesMoines      15        0       0    15
+ 6 leebrandt          4       10       0    14
+ 7 PythonWeekly      14        0       0    14
+ 8 linuxjournal      11        2       0    13
+ 9 maddow             3       10       0    13
+10 RobSandIA          5        8       0    13
+# ... with 179 more rows
 ```
 
 `long_report` contains the same data but in a format convenient for plotting.
 
 ```
-> head(long_report)
-# A tibble: 6 × 4
-    screenName   type count    percent
-         <chr>  <chr> <int>      <dbl>
-1   DMRegister tweets    75 0.14677104
-2    davidfrum tweets    17 0.03326810
-3       marick tweets     8 0.01565558
-4 JamesFallows tweets    15 0.02935421
-5  deanwampler tweets     7 0.01369863
-6       maddow tweets    17 0.03326810
+> print(long_report)
+# A tibble: 81 x 4
+   screen_name   type   count percent
+   <chr>         <chr>  <int>   <dbl>
+ 1 NateSilver538 tweets    13 0.0181 
+ 2 joshbloch     tweets     8 0.0111 
+ 3 paulkrugman   tweets    11 0.0153 
+ 4 aaron_hoffman tweets     7 0.00975
+ 5 NWSDesMoines  tweets    15 0.0209 
+ 6 leebrandt     tweets     4 0.00557
+ 7 PythonWeekly  tweets    14 0.0195 
+ 8 linuxjournal  tweets    11 0.0153 
+ 9 maddow        tweets     3 0.00418
+10 RobSandIA     tweets     5 0.00696
+# ... with 71 more rows
 ```
 
 The plot looks like this.
