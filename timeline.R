@@ -4,12 +4,6 @@ library(purrr)
 library(tidyr)
 library(rtweet)
 
-# source("credentials.R")
-
-# token <- create_token(app = "R apps API",
-#                       consumer_key = getOption("twitter_consumer_key"),
-#                       consumer_secret = getOption("twitter_consumer_secret"))
-
 # Retreive 750 most recent tweets
 timeline <- get_my_timeline(n = 750)
 
