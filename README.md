@@ -10,7 +10,7 @@ See the [rtweet](http://rtweet.info/) documentation for how to set up a Twitter 
 
 ## Output
 
-`report` summarizes tweets by `screenName` and shows you the most active tweeters in your timeline.
+`report` summarizes tweets by `screen_name` and shows you the most active tweeters in your timeline.
 
 ```
 > print(report)
