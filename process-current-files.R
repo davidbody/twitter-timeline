@@ -13,6 +13,11 @@ for (i in seq_along(files)) {
 }
 
 timeline_df <- bind_rows(dfs)
-timeline_df <- unique(timeline_df)
+
+# filter on unique status_id
+timeline_df <- timeline_df %>%
+  group_by(status_id) %>%
+  slice(1L) %>%
+  ungroup()
 
 save(timeline_df, file="current-timeline.RData")
