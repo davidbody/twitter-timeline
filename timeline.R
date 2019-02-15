@@ -37,7 +37,7 @@ g <- long_report %>%
   plot_report("Tweeters constituting 1% or more of timeline")
 
 # Tweets for the last one day
-one_day <- timeline %>% filter(created_at > now() - ddays(1))
+one_day <- timeline %>% filter(created_at > max(created_at) - ddays(1))
 
 one_day_report <- one_day %>%
   group_by(screen_name) %>%
