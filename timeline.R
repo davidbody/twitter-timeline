@@ -6,7 +6,9 @@ library(rtweet)
 timeline <- get_my_timeline(n = 750)
 
 filename <- paste0("./data/timeline-", format(Sys.Date(), "%Y%m%d"), ".RData")
-# save(timeline, file = filename)
+if (!file.exists(filename)) {
+  save(timeline, file = filename)
+}
 # load(filename)
 
 report <- timeline %>%
