@@ -62,3 +62,10 @@ g_hours <- one_day %>%
 
 g1 <- long_one_day_report %>%
   plot_report("Top tweeters for the last day")
+
+plot_tweets_by_user <- function(name) {
+  timeline %>%
+    filter(screen_name == !!name) %>%
+    ggplot(aes(created_at)) +
+    geom_freqpoly(binwidth = 60 * 60)
+}
