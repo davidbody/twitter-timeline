@@ -13,7 +13,11 @@ if (!file.exists(filename)) {
 
 report <- timeline %>%
   group_by(screen_name) %>%
-  summarize(total = n(), retweets = sum(is_retweet), replies = length(which(!is.na(reply_to_user_id))), tweets = total - retweets - replies) %>%
+  summarize(total = n(),
+            retweets = sum(is_retweet),
+            replies = length(which(!is.na(reply_to_user_id))),
+            tweets = total - retweets - replies,
+            .groups = "drop") %>%
   arrange(-total) %>%
   select(screen_name, tweets, retweets, replies, total)
 
@@ -43,7 +47,11 @@ one_day <- timeline %>% filter(created_at > max(created_at) - ddays(1))
 
 one_day_report <- one_day %>%
   group_by(screen_name) %>%
-  summarize(total = n(), retweets = sum(is_retweet), replies = length(which(!is.na(reply_to_user_id))), tweets = total - retweets - replies) %>%
+  summarize(total = n(),
+            retweets = sum(is_retweet),
+            replies = length(which(!is.na(reply_to_user_id))),
+            tweets = total - retweets - replies,
+            .groups = "drop") %>%
   arrange(-total) %>%
   select(screen_name, tweets, retweets, replies, total)
 
