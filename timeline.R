@@ -77,3 +77,7 @@ plot_tweets_by_user <- function(name) {
     ggplot(aes(created_at)) +
     geom_freqpoly(binwidth = 60 * 60)
 }
+
+one_day_report %>%
+  filter(total >= one_percent_of_one_day) %>%
+  print(n = Inf)
