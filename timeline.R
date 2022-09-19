@@ -3,7 +3,11 @@ library(lubridate)
 library(rtweet)
 
 # Retreive 750 most recent tweets
-timeline <- get_my_timeline(n = 750)
+tweets <- get_my_timeline(n = 750)
+users <- users_data(tweets)
+timeline <- cbind(tweets, screen_name = users$screen_name) |>
+  mutate(created_at = parse_date_time(created_at, "%a %b %d %T %z %Y"),
+         is_retweet = str_starts(full_text, "RT @"))
 
 filename <- paste0("./data/timeline-", format(Sys.Date(), "%Y%m%d"), ".RData")
 if (!file.exists(filename)) {
@@ -15,7 +19,7 @@ report <- timeline %>%
   group_by(screen_name) %>%
   summarize(total = n(),
             retweets = sum(is_retweet),
-            replies = length(which(!is.na(reply_to_user_id))),
+            replies = length(which(!is.na(in_reply_to_user_id))),
             tweets = total - retweets - replies,
             .groups = "drop") %>%
   arrange(-total) %>%
@@ -49,7 +53,7 @@ one_day_report <- one_day %>%
   group_by(screen_name) %>%
   summarize(total = n(),
             retweets = sum(is_retweet),
-            replies = length(which(!is.na(reply_to_user_id))),
+            replies = length(which(!is.na(in_reply_to_user_id))),
             tweets = total - retweets - replies,
             .groups = "drop") %>%
   arrange(-total) %>%
@@ -81,3 +85,7 @@ plot_tweets_by_user <- function(name) {
 one_day_report %>%
   filter(total >= one_percent_of_one_day) %>%
   print(n = Inf)
+
+one_day_report |>
+  summarize_if(is.numeric, sum) |>
+  print()
